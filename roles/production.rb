@@ -1,17 +1,15 @@
 name "production"
 description "Custom role for production server"
 
-run_list (
+run_list ([
   "role[vagrant]",
   "recipe[aic13::production]",
-)
+  "recipe[aic13::twitter_monitor]",
+])
 
-secret = File.read(Pathname.new(File.expand_path(File.dirname(__FILE__)))) +
-  "../chef/encrypted_data_bag_secret"
-passwords = Chef::EncryptedDataBagItem.load('aic13', 'secrets', secret)
+passwords = Chef::EncryptedDataBagItem.load('aic13', 'secrets')
 
-default_attributes(
-
+default_attributes({
   postgresql: {
     password: {
       postgres: passwords['production']['postgresql'],
@@ -44,4 +42,12 @@ default_attributes(
     users: [ 'deploy' ],
     passwordless: true,
   },
-)
+  twitter: {
+    oauth: {
+      consumer_key: passwords['production']['twitter']['consumer_key'],
+      consumer_secret: passwords['production']['twitter']['consumer_secret'],
+      access_token: passwords['production']['twitter']['access_token'],
+      access_token_secret: passwords['production']['twitter']['access_token_secret'],
+    }
+  },
+})

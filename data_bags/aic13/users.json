@@ -1,1 +1,12 @@
-{"name":"data_bag_item_aic13_users","json_class":"Chef::DataBagItem","chef_type":"data_bag_item","data_bag":"aic13","raw_data":{"id":"users","ssh_keys":{"encrypted_data":"aavDe6Na56Mo1y0qPzKn1oBVW3+bzDOSDLBc4rNFD6PZGk5DXjxyIbxxrBdr\naBhpbIWnQhnCkTrKQngql/RJKiXTorM6joTk5PjKp4zDc+PIinWzri8jsCoI\nb4IrpHjxHYmFQq/dgB67i7jZakogpHK/mCgtW6iN0fSox5t0CX19Rr4OjMen\nOVnSxjR8yt8rhv8yAUaYnc8SteR46V4XmexDPWMt9Cddr1d5z8DIdJIQjJcQ\n3PuyO3YxuvwrjvMaqYBPyLhas5KUsV8DQ02luvFygb5tbhxgME2FQodt/Eiu\nmtoMKwk9dcYv4NpKLkm7aTC/OcZ94SbrqA3/PldZDkRXv0T+QvGl3B/nSliw\nbQ1KvxBryxRsEkOVou3DcWr5ehUWnJDxxURbj7UR/6cpa6qInsNFBtg7+PPx\nfpDIuYGqQUG+I0LKuBUnh3AnL8j9BzGI8UxXBQcBzqf4QuvU6MYgXAhRhVHC\n9+c27Vens0T1E/dc0ABq3GhO90a5i0Ia5bQrX1upoQ53Z5J5ksVFggTQqFlc\nF0rJ3HDwFJhrJC+0yZUPsOaEwnIMnsR+C5Qm\n","iv":"8lmu+57iq6/pI/1XhjL9Bg==\n","version":1,"cipher":"aes-256-cbc"}}}
+{
+  "name": "data_bag_item_aic13_users",
+  "json_class": "Chef::DataBagItem",
+  "chef_type": "data_bag_item",
+  "data_bag": "aic13",
+  "raw_data": {
+    "id":"users",
+    "ssh_keys": [
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7wn7GwXrYn68RWBv7VPUbTYZ8+NbiS2DrP+LdryWACx+neE7DurIq8I08xy3XtmGuPo8NBRc+4if+4upH6YE455NIXwjqlwwo39Xg+sm2IJH4CAlSDJP7tF9Sl5HHNxsY6BM/vz4oDbF89Zrs9QZ/9IMvBG8Wnzjq7zFAVEBKUQU+ZGgV4qjZpr2Wg52dn/5m3liloqFEB7zP6oKdfe0ezeSWuWRDuF25UZxZ4HGWltpm52BAgp/lKSI5ReT6+C1077LPp9CS1l+i5b/lOISQRQUqIZLomSaDTfgoT59B9Bc4GQq9uS/qvwGL2t9oRZ2j0H6iO7+Kc9TyrIxY9Jgd mmuehlberger@me.com"
+    ]
+  }
+}

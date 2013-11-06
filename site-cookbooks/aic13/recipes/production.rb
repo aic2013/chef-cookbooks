@@ -4,10 +4,17 @@ user 'deploy' do
   supports manage_home: true
 end
 
-directory '/home/deploy/.ssh/authorized_keys' do
+directory '/home/deploy/.ssh' do
+  owner 'deploy'
+  group 'deploy'
+  mode "0700"
+  action :create
+end
+
+template '/home/deploy/.ssh/authorized_keys' do
   source 'authorized_keys.erb'
-  owner u
-  group u
+  owner 'deploy'
+  group 'deploy'
   mode "0600"
   variables keys: data_bag_item('aic13', 'users')['ssh_keys']
 end

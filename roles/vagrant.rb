@@ -11,10 +11,10 @@ run_list ([
   "recipe[mongodb::10gen_repo]",
   "recipe[mongodb]",
   "recipe[java]",
+  "recipe[git]",
 ])
 
-default_attributes(
-
+default_attributes({
   postgresql: {
     password: {
       postgres: 'insecurepassword',
@@ -43,6 +43,9 @@ default_attributes(
     permit_root_login: "no",
     password_authentication: "no",
   },
+  java: {
+    jdk_version: '7'
+  },
   authorization: {
     sudo: {
       groups: [
@@ -51,5 +54,5 @@ default_attributes(
       ],
       passwordless: true,
     }
-  },
-)
+  }
+})
