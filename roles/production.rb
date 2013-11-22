@@ -5,6 +5,7 @@ run_list ([
   "role[vagrant]",
   "recipe[aic13::production]",
   "recipe[aic13::twitter_monitor]",
+  "recipe[aic13::twitter_extractor]",
 ])
 
 passwords = Chef::EncryptedDataBagItem.load('aic13', 'secrets')
