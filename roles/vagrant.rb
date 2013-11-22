@@ -2,6 +2,7 @@ name "vagrant"
 description "Custom role for Vagrant"
 
 run_list ([
+  "recipe[aic13::vagrant]",
   "recipe[openssh]",
   "recipe[sudo]",
   "recipe[apt]",
@@ -13,12 +14,14 @@ run_list ([
   "recipe[java]",
   "recipe[git]",
   "recipe[neo4j-server::tarball]",
+  "recipe[aic13::deploy_database]",
 ])
 
 default_attributes({
   postgresql: {
     password: {
       postgres: 'insecurepassword',
+      deploy: 'deploymentpassword',
     },
     enable_pgdg_apt: true,
     pg_hba: [

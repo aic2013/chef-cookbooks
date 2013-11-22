@@ -12,7 +12,8 @@ passwords = Chef::EncryptedDataBagItem.load('aic13', 'secrets')
 default_attributes({
   postgresql: {
     password: {
-      postgres: passwords['production']['postgresql'],
+      postgres: passwords['production']['postgresql']['postgresql'],
+      deploy: passwords['production']['postgresql']['deploy'],
     },
     enable_pgdg_apt: true,
     pg_hba: [

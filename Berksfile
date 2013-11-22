@@ -1,6 +1,7 @@
 site :opscode
 
 cookbook 'apt'
+cookbook 'database'
 cookbook 'java'
 cookbook 'git'
 cookbook 'mongodb'
