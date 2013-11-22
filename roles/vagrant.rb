@@ -12,6 +12,7 @@ run_list ([
   "recipe[mongodb]",
   "recipe[java]",
   "recipe[git]",
+  "recipe[neo4j-server::tarball]",
 ])
 
 default_attributes({
