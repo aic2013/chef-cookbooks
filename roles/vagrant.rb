@@ -50,6 +50,11 @@ default_attributes({
   java: {
     jdk_version: '7'
   },
+  neo4j: {
+    server: {
+      version: '2.0.0-RC1'
+    }
+  },
   authorization: {
     sudo: {
       groups: [
