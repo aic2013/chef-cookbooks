@@ -6,9 +6,9 @@ git "/home/deploy/twitter_extractor" do
   group "deploy"
 end
 
-# template "/home/deploy/twitter_monitor/twitter4j.properties" do
-#   source "twitter.properties.erb"
-#   owner "deploy"
-#   group "deploy"
-#   mode 00600
-# end
+template "/home/deploy/twitter_extractor/hibernate.properties" do
+  source "hibernate.properties.erb"
+  owner "deploy"
+  group "deploy"
+  mode 00600
+end
