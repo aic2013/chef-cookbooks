@@ -2,14 +2,20 @@ name "production"
 description "Custom role for production server"
 
 run_list ([
+  "recipe[hostname]",
   "role[vagrant]",
-  "recipe[htop]"
+  "recipe[ddclient]",
+  "recipe[htop]",
 ])
 
 passwords = Chef::EncryptedDataBagItem.load('aic13', 'secrets')
 user_secrets = Chef::DataBagItem.load('aic13', 'users')
 
 default_attributes({
+  ddclient: {
+    login: passwords['production']['dyndns']['username'],
+    password: passwords['production']['dyndns']['password'],
+  },
   postgresql: {
     config: {
       listen_addresses: '*',
