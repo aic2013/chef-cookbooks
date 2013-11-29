@@ -16,5 +16,5 @@ template '/home/deploy/.ssh/authorized_keys' do
   owner 'deploy'
   group 'deploy'
   mode "0600"
-  variables keys: data_bag_item('aic13', 'users')['ssh_keys']
+  variables keys: node['authorization']['keys']
 end

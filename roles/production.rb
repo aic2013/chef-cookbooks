@@ -3,20 +3,26 @@ description "Custom role for production server"
 
 run_list ([
   "role[vagrant]",
-  "recipe[aic13::production]",
-  "recipe[aic13::twitter_monitor]",
-  "recipe[aic13::twitter_extractor]",
+  "recipe[htop]"
 ])
 
 passwords = Chef::EncryptedDataBagItem.load('aic13', 'secrets')
+user_secrets = Chef::DataBagItem.load('aic13', 'users')
 
 default_attributes({
   postgresql: {
+    config: {
+      listen_addresses: '*',
+      shared_buffers: '16MB'
+    },
+    database: {
+      host: 'db.aic13.mmuehlberger.com',
+      database: 'twitterdb'
+    },
     password: {
       postgres: passwords['production']['postgresql']['postgresql'],
       deploy: passwords['production']['postgresql']['deploy'],
     },
-    enable_pgdg_apt: true,
     pg_hba: [
       {
         type: 'local',
@@ -30,10 +36,17 @@ default_attributes({
         user: 'postgres',
         addr: 'localhost',
         method: 'md5'
+      }, {
+        type: 'host',
+        db: 'all',
+        user: 'deploy',
+        addr: 'all',
+        method: 'md5'
       },
     ],
     config_pgtune: {
-      db_type: 'mixed'
+      db_type: 'mixed',
+      max_connections: '10',
     }
   },
   openssh: {
@@ -41,8 +54,11 @@ default_attributes({
     password_authentication: "no",
   },
   authorization: {
-    users: [ 'deploy' ],
-    passwordless: true,
+    sudo: {
+      users: [ 'deploy' ],
+      passwordless: true,
+    },
+    keys: user_secrets['ssh_keys'],
   },
   twitter: {
     oauth: {

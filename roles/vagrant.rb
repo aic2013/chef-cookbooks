@@ -2,19 +2,12 @@ name "vagrant"
 description "Custom role for Vagrant"
 
 run_list ([
-  "recipe[aic13::vagrant]",
+  "recipe[aic13::deploy_user]",
   "recipe[openssh]",
   "recipe[sudo]",
   "recipe[apt]",
   "recipe[ntp]",
-  "recipe[postgresql::server]",
-  "recipe[postgresql::config_pgtune]",
-  "recipe[mongodb::10gen_repo]",
-  "recipe[mongodb]",
-  "recipe[java]",
   "recipe[git]",
-  "recipe[neo4j-server::tarball]",
-  "recipe[aic13::deploy_database]",
 ])
 
 default_attributes({
@@ -22,6 +15,10 @@ default_attributes({
     password: {
       postgres: 'insecurepassword',
       deploy: 'deploymentpassword',
+    },
+    database: {
+      host: 'localhost',
+      database: 'twitterdb_development',
     },
     enable_pgdg_apt: true,
     pg_hba: [
@@ -62,6 +59,7 @@ default_attributes({
         :sudo
       ],
       passwordless: true,
-    }
+    },
+    keys: []
   }
 })
