@@ -1,0 +1,7 @@
+{
+  "set_fqdn": "db.aic13.mmuehlberger.com",
+  "run_list": [
+    "role[production]",
+    "role[queue]"
+  ]
+}

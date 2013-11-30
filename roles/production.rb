@@ -16,6 +16,11 @@ default_attributes({
     login: passwords['production']['dyndns']['username'],
     password: passwords['production']['dyndns']['password'],
   },
+  webapp: {
+    ssl: {
+      key: passwords['production']['webapp']['ssl']['key'],
+    }
+  },
   postgresql: {
     config: {
       listen_addresses: '*',

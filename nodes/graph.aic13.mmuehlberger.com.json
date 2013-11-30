@@ -1,6 +1,7 @@
 {
   "set_fqdn": "queue.aic13.mmuehlberger.com",
   "run_list": [
-    "role[production]"
+    "role[production]",
+    "role[neo4j]"
   ]
 }

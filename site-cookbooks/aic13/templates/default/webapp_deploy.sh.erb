@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Copy this script to $HOME and run it
+
+path=/home/deploy/webapp
+tmp=/tmp
+
+echo 'Cloning repo from github...'
+git clone git@github.com:aic2013/webapp.git $tmp
+echo '...done!'
+echo ''
+
+echo 'Removing development files...'
+sudo rm $tmp/README.md
+sudo rm -fr $tmp/docs
+echo '...done!'
+echo ''
+
+echo 'Switching configs to production mode...'
+mv $tmp/configs/env.production.js $tmp/configs/env.js
+mv $tmp/package.production.json $tmp/package.json
+echo '...done!'
+echo ''
+
+echo 'Installing dependency modules...'
+cd $tmp
+sudo npm install -l
+echo '...done!'
+echo ''
+
+echo 'Stopping monit...'
+sudo /etc/init.d/monit stop
+sudo monit stop webapp
+echo '...done!'
+echo ''
+
+echo 'Stopping app server...'
+sudo stop webapp
+echo '...done!'
+echo ''
+
+echo 'Backing up old version...'
+mv $path $path`date +"%Y%m%d%H%M%S"`
+echo '...done!'
+echo ''
+
+echo 'Switch to latest version...'
+mv $tmp $path
+echo '...done!'
+echo ''
+
+echo 'Starting app server...'
+sudo start webapp
+echo '...done!'
+echo ''
+
+echo 'Starting monit...'
+sudo /etc/init.d/monit start
+sudo monit start webapp
+echo '...done!'
+echo ''

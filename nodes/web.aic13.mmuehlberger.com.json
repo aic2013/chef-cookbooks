@@ -1,0 +1,7 @@
+{
+  "set_fqdn": "web.aic13.mmuehlberger.com",
+  "run_list": [
+    "role[production]",
+    "role[web_server]"
+  ]
+}
