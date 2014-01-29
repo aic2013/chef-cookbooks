@@ -1,4 +1,4 @@
 hibernate.connection.driver_class = org.postgresql.Driver
-hibernate.connection.url = jdbc:postgresql://<%= node['postgresql']['database']['host'] %>/<% node['postgresql']['database']['database']
+hibernate.connection.url = jdbc:postgresql://<%= node['postgresql']['database']['host'] %>/<%= node['postgresql']['database']['database'] %>
 hibernate.connection.username = deploy
 hibernate.connection.password = <%= node['postgresql']['password']['deploy'] %>

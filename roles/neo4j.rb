@@ -3,5 +3,5 @@ description "Neo4J Database Server"
 
 run_list([
   "recipe[java]",
-  "recipe[neo4j-server::tarball]",
+  "recipe[neo4j]"
 ])

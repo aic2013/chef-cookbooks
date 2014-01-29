@@ -1,6 +1,8 @@
 name "queue"
-description "Installs ActiveMQ and everything necessary to run it properly"
+description "Installs RabbitMQ and everything necessary to run it properly"
 
 run_list([
-  "recipe[activemq]",
+  "recipe[rabbitmq]",
+  "recipe[rabbitmq::mgmt_console]",
+  "recipe[aic13::rabbitmq]"
 ])

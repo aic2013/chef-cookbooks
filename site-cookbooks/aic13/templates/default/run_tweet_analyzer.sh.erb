@@ -1,0 +1,5 @@
+#!/bin/sh
+
+java -DBROKER_URL="amqp://<%= node['rabbitmq']['user'] %>:<%= node['rabbitmq']['password'] %>@<%= node['rabbitmq']['host'] %>:<%= node['rabbitmq']['port'] %>/<%= node['rabbitmq']['vhost'] %>" \
+     -DNEO4J_JDBC_URL="jdbc:neo4j://<%= node['neo4j']['host'] %>:<%= node['neo4j']['port'] %>" \
+     -jar builds/TweetAnalyzer-latest.jar

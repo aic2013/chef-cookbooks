@@ -1,0 +1,9 @@
+{
+  "set_fqdn": "app.aic13.mmuehlberger.com",
+  "run_list": [
+    "role[production]",
+    "recipe[rvm::system]",
+    "recipe[aic13::follower_fetcher]",
+    "recipe[aic13::batch_commiter]"
+  ]
+}

@@ -21,6 +21,24 @@ default_attributes({
       key: passwords['production']['webapp']['ssl']['key'],
     }
   },
+  rabbitmq: {
+    host: 'queue.aic13.mmuehlberger.com',
+    port: 5672,
+    user: passwords['production']['rabbitmq']['user'],
+    password: passwords['production']['rabbitmq']['password'],
+    admin: passwords['production']['rabbitmq']['admin'],
+    vhost: 'twitter'
+  },
+  mongodb: {
+    host: 'mongodb.aic13.mmuehlberger.com',
+    port: 27017,
+  },
+  neo4j: {
+    host: 'graph.aic13.mmuehlberger.com',
+    port: 7474,
+  },
+  redis: 'redis://graph.aic13.mmuehlberger.com:6379/0',
+  twitter: passwords['production']['twitter'],
   postgresql: {
     config: {
       listen_addresses: '*',
@@ -71,12 +89,8 @@ default_attributes({
     },
     keys: user_secrets['ssh_keys'],
   },
-  twitter: {
-    oauth: {
-      consumer_key: passwords['production']['twitter']['consumer_key'],
-      consumer_secret: passwords['production']['twitter']['consumer_secret'],
-      access_token: passwords['production']['twitter']['access_token'],
-      access_token_secret: passwords['production']['twitter']['access_token_secret'],
-    }
+  rvm: {
+    default_ruby: '2.1.0',
+    user_default_ruby: '2.1.0',
   },
 })

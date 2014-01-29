@@ -1,0 +1,22 @@
+description "FollowerBuilder"
+
+start on startup
+stop on shutdown
+
+respawn
+
+script
+  echo $$ > /var/run/follower_builder.pid
+  cd /home/deploy/follower_builder/
+  exec sudo -u deploy /home/deploy/follower_builder/run_follower_builder.sh >> /var/log/aic13_follower_builder.log
+end script
+
+pre-start script
+    # Date format same as (new Date()).toISOString() for consistency
+    echo "[`date -u +%Y-%m-%dT%T.%3NZ`] (sys) Starting" >> /var/log/aic13_follower_builder.log
+end script
+
+pre-stop script
+    rm /var/run/follower_builder.pid
+    echo "[`date -u +%Y-%m-%dT%T.%3NZ`] (sys) Stopping" >> /var/log/aic13_follower_builder.log
+end script

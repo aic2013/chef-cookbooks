@@ -1,8 +1,7 @@
 {
-  "set_fqdn": "graph.aic13.mmuehlberger.com",
+  "set_fqdn": "redis.aic13.mmuehlberger.com",
   "run_list": [
     "role[production]",
-    "role[neo4j]",
     "role[redis]"
   ]
 }

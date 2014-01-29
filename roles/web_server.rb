@@ -4,7 +4,6 @@ description "Role for the node.js web server"
 run_list([
   "recipe[nodejs]",
   "recipe[nginx::source]",
-  "recipe[monit]",
   "recipe[aic13::webapp]",
 ])
 

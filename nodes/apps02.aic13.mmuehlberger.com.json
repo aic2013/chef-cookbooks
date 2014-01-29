@@ -1,0 +1,10 @@
+{
+  "set_fqdn": "apps02.aic13.mmuehlberger.com",
+  "run_list":[
+    "role[production]",
+    "recipe[java]",
+    "recipe[aic13::tweet_producer]",
+    "recipe[aic13::tweet_analyzer]",
+    "recipe[aic13::follower_builder]"
+  ]
+}

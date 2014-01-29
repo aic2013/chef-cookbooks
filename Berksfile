@@ -1,17 +1,29 @@
 site :opscode
 
 cookbook 'apt'
-cookbook 'database'
-cookbook 'java'
 cookbook 'git'
 cookbook 'hostname'
-cookbook 'mongodb'
 cookbook 'monit'
-cookbook 'neo4j-server', :git => 'http://github.com/michaelklishin/neo4j-server-chef-cookbook'
 cookbook 'nginx'
-cookbook 'nodejs'
 cookbook 'ntp'
 cookbook 'openssh'
-cookbook 'postgresql'
 cookbook 'sudo'
 cookbook 'htop'
+
+# Languages
+cookbook 'java'
+cookbook 'nodejs'
+cookbook 'rvm', github: 'fnichol/chef-rvm'
+
+# Databases
+cookbook 'database'
+cookbook 'mongodb'
+cookbook 'neo4j-server', github: 'michaelklishin/neo4j-server-chef-cookbook'
+cookbook 'postgresql'
+
+# Applications
+cookbook 'screen'
+
+# Queueing
+cookbook 'rabbitmq'
+cookbook 'redis'

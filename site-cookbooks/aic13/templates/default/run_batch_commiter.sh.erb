@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export BROKER_URL="amqp://<%= node['rabbitmq']['user'] %>:<%= node['rabbitmq']['password'] %>@<%= node['rabbitmq']['host'] %>:<%= node['rabbitmq']['port'] %>/<%= node['rabbitmq']['vhost'] %>"
+export NEO4J_SERVER="<%= node['neo4j']['host'] %>"
+
+ruby batch_commiter.rb

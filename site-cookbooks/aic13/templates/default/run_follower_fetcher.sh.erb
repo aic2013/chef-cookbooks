@@ -1,0 +1,8 @@
+#!/bin/sh
+
+export BROKER_URL="amqp://<%= node['rabbitmq']['user'] %>:<%= node['rabbitmq']['password'] %>@<%= node['rabbitmq']['host'] %>:<%= node['rabbitmq']['port'] %>/<%= node['rabbitmq']['vhost'] %>"
+export NEO4J_SERVER="<%= node['neo4j']['host'] %>"
+export REDIS_URL="<%= node['redis'] %>"
+export FETCHER_ID=<%= @fetcher_id %>
+
+ruby -Ilib lib/follower_fetcher.rb
